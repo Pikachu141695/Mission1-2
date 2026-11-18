@@ -145,3 +145,62 @@ class QuizGame:
                 continue
             return text
 
+    def display_menu(self) -> None:
+        """
+        [메서드: display_menu]
+        - 왜 필요한가(Why): 프로그램의 메인 화면에서 사용자가 선택할 수 있는 기능 목록을 일관되게 보여주기 위함입니다.
+        - 어떻게 동작하는가(How): 콘솔 화면에 구분선과 1~5번 메뉴 항목을 깔끔하게 출력합니다.
+        """
+        print("\n" + "=" * 40)
+        print("        🎯 나만의 퀴즈 게임 🎯")
+        print("=" * 40)
+        print("1. 퀴즈 풀기")
+        print("2. 퀴즈 추가")
+        print("3. 퀴즈 목록")
+        print("4. 점수 확인")
+        print("5. 종료")
+        print("=" * 40)
+
+    def run(self) -> None:
+        """
+        [메서드: run]
+        - 왜 필요한가(Why): 프로그램의 메인 제어 루프(Main Loop)를 실행하여 사용자가 종료(5번)를 선택할 때까지 게임을 계속 유지하기 위함입니다.
+        - 어떻게 동작하는가(How):
+          1. while True 무한 루프 안에서 메뉴를 출력합니다.
+          2. input_number()를 통해 1~5 사이의 검증된 번호를 입력받습니다.
+          3. if/elif/else 분기를 통해 선택된 번호에 매칭되는 메서드를 호출합니다.
+          4. 5번을 선택하면 break 문으로 루프를 탈출하여 게임을 안전하게 종료합니다.
+        """
+        while True:
+            self.display_menu()
+            choice = self.input_number("선택: ", 1, 5)
+
+            if choice == 1:
+                self.play_quiz()
+            elif choice == 2:
+                self.add_quiz()
+            elif choice == 3:
+                self.list_quizzes()
+            elif choice == 4:
+                self.show_score()
+            elif choice == 5:
+                print("\n👋 퀴즈 게임을 종료합니다. 언제든 다시 도전해 보세요!")
+                break
+
+    def play_quiz(self) -> None:
+        """(스텁) 퀴즈 풀기 기능 - 브랜치 작업 예정"""
+        print("\n[알림] 퀴즈 풀기 기능을 준비 중입니다.")
+
+    def add_quiz(self) -> None:
+        """(스텁) 퀴즈 추가 기능 - 후속 작업 예정"""
+        print("\n[알림] 퀴즈 추가 기능을 준비 중입니다.")
+
+    def list_quizzes(self) -> None:
+        """(스텁) 퀴즈 목록 보기 기능 - 후속 작업 예정"""
+        print("\n[알림] 퀴즈 목록 기능을 준비 중입니다.")
+
+    def show_score(self) -> None:
+        """(스텁) 최고 점수 확인 기능 - 후속 작업 예정"""
+        print("\n[알림] 점수 확인 기능을 준비 중입니다.")
+
+
