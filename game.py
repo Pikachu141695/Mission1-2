@@ -196,8 +196,27 @@ class QuizGame:
         print("\n[알림] 퀴즈 추가 기능을 준비 중입니다.")
 
     def list_quizzes(self) -> None:
-        """(스텁) 퀴즈 목록 보기 기능 - 후속 작업 예정"""
-        print("\n[알림] 퀴즈 목록 기능을 준비 중입니다.")
+        """
+        [메서드: list_quizzes]
+        - 왜 필요한가(Why): 현재 등록된 모든 퀴즈의 목록과 총 개수를 사용자가 한눈에 파악할 수 있도록 하기 위함입니다.
+        - 어떻게 동작하는가(How):
+          1. if not self.quizzes 검사로 등록된 퀴즈가 없는 경우 안내 문구를 띄우고 종료합니다.
+          2. 퀴즈가 있다면 총 개수를 출력하고, for 반복문과 enumerate를 이용해 [1], [2] 번호와 함께 문제 제목을 차례로 출력합니다.
+        """
+        print("\n" + "=" * 40)
+        print(f"📋 등록된 퀴즈 목록 (총 {len(self.quizzes)}개)")
+        print("=" * 40)
+
+        # 등록된 퀴즈가 없는 예외 상황 처리
+        if not self.quizzes:
+            print("현재 등록된 퀴즈가 없습니다. 메뉴에서 새 퀴즈를 추가해 보세요!")
+            print("=" * 40)
+            return
+
+        # 모든 퀴즈의 지문을 순서대로 나열합니다.
+        for idx, quiz in enumerate(self.quizzes, start=1):
+            print(f"[{idx}] {quiz.question}")
+        print("=" * 40)
 
     def show_score(self) -> None:
         """(스텁) 최고 점수 확인 기능 - 후속 작업 예정"""
