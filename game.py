@@ -91,3 +91,57 @@ class QuizGame:
                 json.dump(payload, f, ensure_ascii=False, indent=4)
         except OSError as e:
             print(f"⚠️ 파일 저장 중 오류가 발생했습니다: {e}")
+
+    def input_number(self, prompt: str, min_val: int, max_val: int) -> int:
+        """
+        [메서드: input_number (공통 입력 및 예외 검증)]
+        - 왜 필요한가(Why): 사용자가 잘못된 값(문자열, 빈 엔터, 범위 밖 숫자)을 입력했을 때
+          프로그램이 빨간색 에러를 내며 강제 종료되지 않고, 안내 메시지를 띄우며 다시 입력받기 위함입니다.
+        - 어떻게 동작하는가(How):
+          1. while True 무한 루프를 통해 올바른 숫자가 들어올 때까지 반복합니다.
+          2. input()으로 받은 문자열의 앞뒤 공백을 strip()으로 제거합니다.
+          3. 빈 입력("")인 경우 안내 메시지를 출력하고 다시 반복합니다.
+          4. int() 변환을 시도하여 숫자가 아니면 ValueError를 잡아 안내 메시지를 출력합니다.
+          5. 숫자가 min_val ~ max_val 범위에 속하는지 확인 후, 정상이면 해당 정수를 반환(return)합니다.
+        
+        :param prompt: 사용자에게 보여줄 입력 안내 문구
+        :param min_val: 허용 가능한 최소 정수
+        :param max_val: 허용 가능한 최대 정수
+        :return: 유효성이 검증된 정수
+        """
+        while True:
+            raw_input = input(prompt).strip()
+
+            # 케이스 1: 아무것도 입력하지 않고 엔터만 친 경우
+            if not raw_input:
+                print(f"⚠️ 입력을 하지 않았습니다. {min_val}~{max_val} 사이의 숫자를 입력해 주세요.")
+                continue
+
+            # 케이스 2: 숫자로 변환 시도 (문자열이 섞여있으면 ValueError 발생)
+            try:
+                number = int(raw_input)
+            except ValueError:
+                print(f"⚠️ 잘못된 입력입니다. {min_val}~{max_val} 사이의 숫자를 입력하세요.")
+                continue
+
+            # 케이스 3: 숫자는 맞으나 허용 범위 밖인 경우
+            if not (min_val <= number <= max_val):
+                print(f"⚠️ 잘못된 입력입니다. {min_val}~{max_val} 사이의 숫자를 입력하세요.")
+                continue
+
+            # 모든 유효성 검사를 통과한 정수 반환
+            return number
+
+    def input_non_empty_text(self, prompt: str) -> str:
+        """
+        [메서드: input_non_empty_text]
+        - 왜 필요한가(Why): 새 퀴즈 추가 시 문제나 보기가 빈 문자열(공백)로 들어가지 않도록 검증하기 위함입니다.
+        - 어떻게 동작하는가(How): strip()을 거친 후 비어있으면 경고를 출력하고 다시 입력을 받습니다.
+        """
+        while True:
+            text = input(prompt).strip()
+            if not text:
+                print("⚠️ 공백은 허용되지 않습니다. 내용을 1자 이상 입력해 주세요.")
+                continue
+            return text
+
