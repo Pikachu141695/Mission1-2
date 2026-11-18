@@ -1,0 +1,55 @@
+{
+    "quizzes": [
+        {
+            "question": "컴퓨터의 두뇌에 해당하며 연산과 제어를 담당하는 핵심 부품(CPU)의 약자는?",
+            "choices": [
+                "Central Processing Unit",
+                "Computer Personal Unit",
+                "Core Power Unit",
+                "Control Program Unit"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "파이썬(Python) 프로그래밍 언어의 이름은 어디에서 유래되었을까요?",
+            "choices": [
+                "아프리카에 서식하는 거대한 비단뱀",
+                "영국의 전설적인 코미디 쇼 '몬티 파이선 비행 서커스'",
+                "그리스 신화에 등장하는 거대한 뱀 괴물",
+                "창시자 귀도 반 로섬이 기르던 애완 앵무새"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "웹 브라우저와 웹 서버 간 데이터를 안전하게 암호화하여 통신하는 프로토콜은?",
+            "choices": [
+                "HTTP (HyperText Transfer Protocol)",
+                "FTP (File Transfer Protocol)",
+                "HTTPS (HyperText Transfer Protocol Secure)",
+                "SMTP (Simple Mail Transfer Protocol)"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "인터넷 웹사이트 주소(URL) 앞에 붙는 'www'의 약자는 무엇일까요?",
+            "choices": [
+                "World Wide Web",
+                "Wide World Web",
+                "World Web Wireless",
+                "Whole World Window"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "소프트웨어 프로그램에서 논리적 오류(버그)를 찾아내고 수정하는 작업을 무엇이라고 할까요?",
+            "choices": [
+                "리팩토링 (Refactoring)",
+                "디버깅 (Debugging)",
+                "컴파일 (Compiling)",
+                "배포 (Deployment)"
+            ],
+            "answer": 2
+        }
+    ],
+    "best_score": 0
+}
