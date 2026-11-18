@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 [파일 용도 설명]
-이 파일(default_data.py)은 프로그램 최초 실행 시(state.json 파일이 없을 때) 또는
-기존 데이터 파일이 손상되었을 때 기본으로 제공할 5개 이상의 시드(기본) 퀴즈 데이터를 정의합니다.
-실무에서도 데이터베이스가 비어있을 때 초기 데이터를 채워 넣는 '시드(Seed) 데이터' 방식을 자주 사용합니다.
+이 파일(default_data.py)은 프로그램 최초 실행 시 제공할 기본 퀴즈 5종 시드 데이터를 정의합니다.
+보너스 과제 요구사항에 맞춰 각 퀴즈마다 '힌트(hint)' 내용이 추가되었습니다.
 """
 
 from quiz import Quiz
@@ -11,10 +10,7 @@ from quiz import Quiz
 def get_default_quizzes() -> list[Quiz]:
     """
     [함수 역할]
-    선정된 주제인 '흥미진진한 컴퓨터 & IT 상식' 퀴즈 5개를 Quiz 인스턴스 리스트로 생성하여 반환합니다.
-    
-    - 왜 필요한가(Why): 사용자가 퀴즈를 직접 추가하기 전에도 곧바로 게임을 플레이할 수 있도록 초기 퀴즈를 보장하기 위함입니다.
-    - 어떻게 동작하는가(How): 각각의 문제, 4개 선택지, 1~4번 정답을 담아 Quiz 클래스로 객체화하고 리스트에 담아 반환합니다.
+    선정된 주제인 '흥미진진한 컴퓨터 & IT 상식' 퀴즈 5개를 힌트와 함께 Quiz 인스턴스 리스트로 생성합니다.
     """
     return [
         Quiz(
@@ -25,7 +21,8 @@ def get_default_quizzes() -> list[Quiz]:
                 "Core Power Unit",
                 "Control Program Unit"
             ],
-            answer=1
+            answer=1,
+            hint="중심(Central)에서 처리를(Processing) 담당하는 장치(Unit)라는 뜻입니다."
         ),
         Quiz(
             question="파이썬(Python) 프로그래밍 언어의 이름은 어디에서 유래되었을까요?",
@@ -35,7 +32,8 @@ def get_default_quizzes() -> list[Quiz]:
                 "그리스 신화에 등장하는 거대한 뱀 괴물",
                 "창시자 귀도 반 로섬이 기르던 애완 앵무새"
             ],
-            answer=2
+            answer=2,
+            hint="창시자 귀도 반 로섬은 영국의 유명 코미디 그룹 '몬티 파이선'의 열렬한 팬이었습니다."
         ),
         Quiz(
             question="웹 브라우저와 웹 서버 간 데이터를 안전하게 암호화하여 통신하는 프로토콜은?",
@@ -45,7 +43,8 @@ def get_default_quizzes() -> list[Quiz]:
                 "HTTPS (HyperText Transfer Protocol Secure)",
                 "SMTP (Simple Mail Transfer Protocol)"
             ],
-            answer=3
+            answer=3,
+            hint="일반 HTTP 통신 규약 끝에 '보안(Secure)'을 의미하는 알파벳 S가 붙어 있습니다."
         ),
         Quiz(
             question="인터넷 웹사이트 주소(URL) 앞에 붙는 'www'의 약자는 무엇일까요?",
@@ -55,7 +54,8 @@ def get_default_quizzes() -> list[Quiz]:
                 "World Web Wireless",
                 "Whole World Window"
             ],
-            answer=1
+            answer=1,
+            hint="전 세계(World)에 거미줄(Web)처럼 넓게(Wide) 퍼져있는 정보 공간을 뜻합니다."
         ),
         Quiz(
             question="소프트웨어 프로그램에서 논리적 오류(버그)를 찾아내고 수정하는 작업을 무엇이라고 할까요?",
@@ -65,6 +65,7 @@ def get_default_quizzes() -> list[Quiz]:
                 "컴파일 (Compiling)",
                 "배포 (Deployment)"
             ],
-            answer=2
+            answer=2,
+            hint="초기 컴퓨터 기계에 진짜 나방(벌레, Bug)이 끼어 오류가 났던 것을 잡아낸(De-) 일화에서 유래했습니다."
         )
     ]
