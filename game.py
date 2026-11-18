@@ -17,14 +17,20 @@ class QuizGame:
     퀴즈 게임 전체의 상태(퀴즈 목록, 최고 점수)와 진행 로직을 담당하는 매니저 클래스입니다.
     """
 
-    def __init__(self, state_file_path: str = "state.json"):
+    def __init__(self, state_file_path: str | None = None):
         """
         [생성자 메서드: __init__]
         - 왜 필요한가(Why): 게임을 시작할 때 데이터를 보관할 파일 경로를 지정하고, 
           기존에 저장된 퀴즈와 최고 점수를 불러와 준비하기 위함입니다.
-        - 어떻게 동작하는가(How): state_file_path를 인자로 받아 저장하고, load_data()를 호출하여 초기 데이터를 채웁니다.
+        - 어떻게 동작하는가(How): 경로가 주어지지 않으면 실행 위치(CWD)와 상관없이 프로젝트 폴더 내부의 'state.json'을 안전하게 가리키도록 절대 경로를 계산합니다.
         """
-        self.state_file_path = state_file_path
+        if state_file_path is None:
+            # os.path.dirname(os.path.abspath(__file__))는 현재 game.py가 위치한 폴더 경로를 반환합니다.
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            self.state_file_path = os.path.join(base_dir, "state.json")
+        else:
+            self.state_file_path = state_file_path
+
         self.quizzes: list[Quiz] = []
         self.best_score: int = 0
         
