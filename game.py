@@ -188,8 +188,58 @@ class QuizGame:
                 break
 
     def play_quiz(self) -> None:
-        """(스텁) 퀴즈 풀기 기능 - 브랜치 작업 예정"""
-        print("\n[알림] 퀴즈 풀기 기능을 준비 중입니다.")
+        """
+        [메서드: play_quiz]
+        - 왜 필요한가(Why): 사용자가 등록된 퀴즈를 순서대로 풀고, 정답 여부를 확인하며,
+          최종 점수를 집계하여 최고 기록을 갱신하기 위함입니다.
+        - 어떻게 동작하는가(How):
+          1. if not self.quizzes로 문제가 없는 경우 안내 후 종료합니다.
+          2. correct_count 변수를 0으로 초기화하여 맞힌 개수를 셉니다.
+          3. for 반복문으로 각 Quiz 객체를 순회하며 quiz.display()로 문제를 화면에 띄웁니다.
+          4. input_number()로 1~4 사이의 정답 번호를 입력받습니다.
+          5. quiz.is_correct()로 정답 여부를 판별하고 정답/오답 안내를 즉시 출력합니다.
+          6. 모든 문제 풀이가 끝나면 정답률(100점 만점 환산 점수)을 계산하여 결과를 표시합니다.
+          7. 기존 최고 점수(best_score)보다 높은 점수라면 최고 점수를 갱신하고 state.json에 자동 저장합니다.
+        """
+        if not self.quizzes:
+            print("\n⚠️ 등록된 퀴즈가 없습니다. 먼저 메뉴에서 퀴즈를 추가해 주세요!")
+            return
+
+        total_questions = len(self.quizzes)
+        correct_count = 0
+
+        print(f"\n📝 퀴즈를 시작합니다! (총 {total_questions}문제)")
+
+        # for 반복문: 등록된 문제를 처음부터 끝까지 1문제씩 가져옵니다.
+        for idx, quiz in enumerate(self.quizzes, start=1):
+            quiz.display(question_number=idx)
+            
+            # 1~4번 중 하나의 정답을 입력받습니다.
+            user_choice = self.input_number("정답 입력 (1-4): ", 1, len(quiz.choices))
+
+            # 사용자가 입력한 번호와 실제 정답 번호를 대조합니다.
+            if quiz.is_correct(user_choice):
+                print("✅ 정답입니다!")
+                correct_count += 1
+            else:
+                correct_answer_text = quiz.choices[quiz.answer - 1]
+                print(f"❌ 틀렸습니다! 정답은 [{quiz.answer}번: {correct_answer_text}] 입니다.")
+
+        # 점수 계산: 100점 만점 기준으로 환산 (정수형)
+        score_percentage = int((correct_count / total_questions) * 100)
+
+        print("\n" + "=" * 40)
+        print(f"🏆 결과: {total_questions}문제 중 {correct_count}문제 정답! ({score_percentage}점)")
+
+        # 최고 점수 갱신 판별 로직
+        if score_percentage > self.best_score:
+            print(f"🎉 축하합니다! 새로운 최고 점수입니다! (기존: {self.best_score}점 ➔ 신규: {score_percentage}점)")
+            self.best_score = score_percentage
+            # 갱신된 최고 점수를 state.json 파일에 영구 반영합니다.
+            self.save_data()
+        else:
+            print(f"📊 현재까지의 최고 기록은 {self.best_score}점입니다.")
+        print("=" * 40)
 
     def add_quiz(self) -> None:
         """(스텁) 퀴즈 추가 기능 - 후속 작업 예정"""
