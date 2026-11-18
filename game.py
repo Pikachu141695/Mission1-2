@@ -242,8 +242,42 @@ class QuizGame:
         print("=" * 40)
 
     def add_quiz(self) -> None:
-        """(스텁) 퀴즈 추가 기능 - 후속 작업 예정"""
-        print("\n[알림] 퀴즈 추가 기능을 준비 중입니다.")
+        """
+        [메서드: add_quiz]
+        - 왜 필요한가(Why): 사용자가 직접 원하는 퀴즈 문제와 4개의 선택지, 정답 번호를 등록하고
+          이를 state.json에 영구 저장하기 위함입니다.
+        - 어떻게 동작하는가(How):
+          1. input_non_empty_text()를 통해 공백이 아닌 문제 지문을 입력받습니다.
+          2. for 루프로 선택지 1부터 4까지 총 4개의 보기를 입력받아 리스트에 담습니다.
+          3. input_number()를 통해 1~4 사이의 정답 번호를 입력받습니다.
+          4. 새 Quiz 객체를 생성하여 self.quizzes 목록에 append()로 추가합니다.
+          5. self.save_data()를 호출하여 추가된 내용을 파일에 즉시 기록합니다.
+        """
+        print("\n" + "=" * 40)
+        print("📌 새로운 퀴즈를 추가합니다.")
+        print("=" * 40)
+
+        # 1. 문제 지문 입력
+        question = self.input_non_empty_text("문제를 입력하세요: ")
+
+        # 2. 선택지 4개 순차 입력
+        choices: list[str] = []
+        for i in range(1, 5):
+            choice = self.input_non_empty_text(f"선택지 {i}: ")
+            choices.append(choice)
+
+        # 3. 정답 번호 (1~4) 입력 및 유효성 검증
+        answer = self.input_number("정답 번호 (1-4): ", 1, 4)
+
+        # 4. 새 Quiz 객체 생성 및 리스트 추가
+        new_quiz = Quiz(question=question, choices=choices, answer=answer)
+        self.quizzes.append(new_quiz)
+
+        # 5. 파일에 영구 저장 (데이터 영속성)
+        self.save_data()
+
+        print("\n✅ 퀴즈가 성공적으로 추가되었습니다!")
+        print("=" * 40)
 
     def list_quizzes(self) -> None:
         """
