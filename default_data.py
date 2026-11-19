@@ -2,70 +2,75 @@
 """
 [파일 용도 설명]
 이 파일(default_data.py)은 프로그램 최초 실행 시 제공할 기본 퀴즈 5종 시드 데이터를 정의합니다.
-보너스 과제 요구사항에 맞춰 각 퀴즈마다 '힌트(hint)' 내용이 추가되었습니다.
+이번 버전에서는 '파이썬 첫걸음' 학습자 수준에 맞는 아주 기초적인 Python 입문 문제 5개를 제공합니다.
+보너스 과제 요구사항에 맞춰 각 퀴즈마다 '힌트(hint)' 내용도 함께 포함되어 있습니다.
 """
+
 
 from quiz import Quiz
 
 def get_default_quizzes() -> list[Quiz]:
     """
     [함수 역할]
-    선정된 주제인 '흥미진진한 컴퓨터 & IT 상식' 퀴즈 5개를 힌트와 함께 Quiz 인스턴스 리스트로 생성합니다.
+    '파이썬 첫걸음' 학습자용 기초 문제 5개를 힌트와 함께 Quiz 인스턴스 리스트로 생성합니다.
+    문제 주제는 print, 변수, 자료형, 리스트, 반복문처럼 입문자가 가장 먼저 배우는 핵심 개념들로 구성했습니다.
     """
+
     return [
-        Quiz(
-            question="컴퓨터의 두뇌에 해당하며 연산과 제어를 담당하는 핵심 부품(CPU)의 약자는?",
+                Quiz(
+            question="파이썬에서 화면에 문장을 출력할 때 사용하는 함수는 무엇일까요?",
             choices=[
-                "Central Processing Unit",
-                "Computer Personal Unit",
-                "Core Power Unit",
-                "Control Program Unit"
-            ],
-            answer=1,
-            hint="중심(Central)에서 처리를(Processing) 담당하는 장치(Unit)라는 뜻입니다."
-        ),
-        Quiz(
-            question="파이썬(Python) 프로그래밍 언어의 이름은 어디에서 유래되었을까요?",
-            choices=[
-                "아프리카에 서식하는 거대한 비단뱀",
-                "영국의 전설적인 코미디 쇼 '몬티 파이선 비행 서커스'",
-                "그리스 신화에 등장하는 거대한 뱀 괴물",
-                "창시자 귀도 반 로섬이 기르던 애완 앵무새"
+                "input()",
+                "print()",
+                "len()",
+                "range()"
             ],
             answer=2,
-            hint="창시자 귀도 반 로섬은 영국의 유명 코미디 그룹 '몬티 파이선'의 열렬한 팬이었습니다."
+            hint="괄호 안의 내용을 터미널에 보여주는 가장 대표적인 출력 함수입니다."
         ),
         Quiz(
-            question="웹 브라우저와 웹 서버 간 데이터를 안전하게 암호화하여 통신하는 프로토콜은?",
+            question="다음 중 변수에 숫자 10을 저장하는 올바른 코드는 무엇일까요?",
             choices=[
-                "HTTP (HyperText Transfer Protocol)",
-                "FTP (File Transfer Protocol)",
-                "HTTPS (HyperText Transfer Protocol Secure)",
-                "SMTP (Simple Mail Transfer Protocol)"
+                "10 = x",
+                "x == 10",
+                "x = 10",
+                "x :=: 10"
             ],
             answer=3,
-            hint="일반 HTTP 통신 규약 끝에 '보안(Secure)'을 의미하는 알파벳 S가 붙어 있습니다."
+            hint="파이썬에서 변수에 값을 넣을 때는 '=' 기호를 사용합니다. 왼쪽은 변수 이름, 오른쪽은 값입니다."
         ),
         Quiz(
-            question="인터넷 웹사이트 주소(URL) 앞에 붙는 'www'의 약자는 무엇일까요?",
+            question="다음 중 문자열(String) 데이터는 무엇일까요?",
             choices=[
-                "World Wide Web",
-                "Wide World Web",
-                "World Web Wireless",
-                "Whole World Window"
+                "123",
+                "3.14",
+                "True",
+                "\"안녕하세요\""
+            ],
+            answer=4,
+            hint="문자열은 보통 따옴표(작은따옴표 또는 큰따옴표)로 감싸서 표현합니다."
+        ),
+        Quiz(
+            question="여러 값을 순서대로 저장할 때 자주 사용하는 파이썬 자료형은 무엇일까요?",
+            choices=[
+                "list",
+                "int",
+                "float",
+                "bool"
             ],
             answer=1,
-            hint="전 세계(World)에 거미줄(Web)처럼 넓게(Wide) 퍼져있는 정보 공간을 뜻합니다."
+            hint="대괄호 [ ] 를 사용해서 만들며, 여러 값을 한 번에 담을 수 있습니다."
         ),
         Quiz(
-            question="소프트웨어 프로그램에서 논리적 오류(버그)를 찾아내고 수정하는 작업을 무엇이라고 할까요?",
+            question="for문에서 일정한 범위의 숫자를 만들 때 자주 사용하는 함수는 무엇일까요?",
             choices=[
-                "리팩토링 (Refactoring)",
-                "디버깅 (Debugging)",
-                "컴파일 (Compiling)",
-                "배포 (Deployment)"
+                "type()",
+                "range()",
+                "print()",
+                "str()"
             ],
             answer=2,
-            hint="초기 컴퓨터 기계에 진짜 나방(벌레, Bug)이 끼어 오류가 났던 것을 잡아낸(De-) 일화에서 유래했습니다."
+            hint="for i in ___(5): 처럼 많이 사용합니다."
         )
+
     ]
