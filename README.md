@@ -275,4 +275,7 @@ python main.py     # 퀴즈 게임을 실행합니다.
 이렇게 수정 포인트를 먼저 찾고 들어가면,
 요구사항이 바뀌더라도 전체 코드를 처음부터 다시 뜯지 않고 필요한 부분만 빠르게 수정할 수 있습니다.
 
+<img width="540" height="380" alt="image" src="https://github.com/user-attachments/assets/06d3250d-750b-4ed9-a192-1be4d4659dab" />
+
+
 
